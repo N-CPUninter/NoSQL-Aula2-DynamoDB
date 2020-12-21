@@ -76,21 +76,33 @@ app.get("/editar", (request, response) => {
   AWS.config.update({region:"sa-east-1"});
   var client = new AWS.DynamoDB.DocumentClient();
   
-  var ator = request.query.ator;
-  var filme = request.query.filme;
+  var ator = request.query.Atores;
+  var filme = request.query.NomeDoFilme;
   var valor = request.query.valor;
   
   var params = {
     TableName: "Filmes",
     Key: {
-      ator: ator,
-      filme:filme,
+      Atores: ator,
+      NomeDoFilme:filme,
     },
     UpdateExpression: "set #s = :y",
     ExpressionAttributeNames:{
-      '#s':"Aç"
+      '#s':"Gênero"
+    },
+    ExpresionAttributeValues:{
+      ':y':valor
     }
   }
+  
+  client.update(params, function(err,data){
+    if(err){
+      console.log(err);
+    }else{
+      response.send(data);
+    }
+  });
+  
 });
 
 // listen for requests :)
