@@ -36,8 +36,8 @@ app.get("/dreams", (request, response) => {
   response.json(dreams);
 });
 
-app.get("/TESTE", (request, response) => {
-
+app.get("/listartabelas", (request, response) => {
+  AWS.config.update({region:"sa-east-1"});
 });
 
 // listen for requests :)
