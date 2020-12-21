@@ -76,15 +76,15 @@ app.get("/editar", (request, response) => {
   AWS.config.update({region:"sa-east-1"});
   var client = new AWS.DynamoDB.DocumentClient();
   
-  var ator = request.query.Atores;
-  var filme = request.query.NomeDoFilme;
+  var ator = request.query.atores;
+  var filme = request.query.filmes;
   var valor = request.query.valor;
   
   var params = {
     TableName: "Filmes",
     Key: {
       Atores: ator,
-      NomeDoFilme:filme,
+      NomeDoFilme: filme
     },
     UpdateExpression: "set #s = :y",
     ExpressionAttributeNames:{
@@ -103,6 +103,13 @@ app.get("/editar", (request, response) => {
     }
   });
   
+});
+
+app.get("/excluir", (request, response) => {
+  AWS.config.update({region:"sa-east-1"});
+  var client = new AWS.DynamoDB.DocumentClient();
+  var ator = request.query.atores;
+  var filme = request.query.filmes;
 });
 
 // listen for requests :)
