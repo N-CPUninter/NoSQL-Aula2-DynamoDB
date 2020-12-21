@@ -43,8 +43,25 @@ app.get("/listartabelas", (request, response) => {
   dynamodb.listTables(params, function(err,data){
     if (err) {
       console.log(err);
+    } else {
+      response.send(data);
     }
   });
+});
+
+app.get("/listartabelas", (request, response) => {
+  AWS.config.update({region:"sa-east-1"});
+  var client = new AWS.DynamoDB.DocumentClient();
+  var params = {
+    TableName = "Filmes";
+    Item: {
+    Atores:"Antonio Fagundes",
+    NomeDoFilme:"Lagoa Azul",
+    Ano: "2018",
+    Duração:"180",
+    Gênero:"Terror"
+  }
+  }
 });
 
 // listen for requests :)
