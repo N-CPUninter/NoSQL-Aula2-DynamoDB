@@ -72,6 +72,27 @@ app.get("/inserir", (request, response) => {
   });
 });
 
+app.get("/editar", (request, response) => {
+  AWS.config.update({region:"sa-east-1"});
+  var client = new AWS.DynamoDB.DocumentClient();
+  
+  var ator = request.query.ator;
+  var filme = request.query.filme;
+  var valor = request.query.valor;
+  
+  var params = {
+    TableName: "Filmes",
+    Key: {
+      ator: ator,
+      filme:filme,
+    },
+    UpdateExpression: "set #s = :y",
+    ExpressionAttributeNames:{
+      '#s':"Aç"
+    }
+  }
+});
+
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
