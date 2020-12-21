@@ -49,6 +49,7 @@ app.get("/listartabelas", (request, response) => {
   });
 });
 
+// Inserir
 app.get("/inserir", (request, response) => {
   AWS.config.update({region:"sa-east-1"});
   var client = new AWS.DynamoDB.DocumentClient();
@@ -72,6 +73,7 @@ app.get("/inserir", (request, response) => {
   });
 });
 
+// Editar
 app.get("/editar", (request, response) => {
   AWS.config.update({region:"sa-east-1"});
   var client = new AWS.DynamoDB.DocumentClient();
@@ -105,12 +107,31 @@ app.get("/editar", (request, response) => {
   
 });
 
+// Excluir
 app.get("/excluir", (request, response) => {
   AWS.config.update({region:"sa-east-1"});
   var client = new AWS.DynamoDB.DocumentClient();
   var ator = request.query.atores;
   var filme = request.query.filmes;
+  
+   var params = {
+    TableName: "Filmes",
+    Key: {
+      Atores: ator,
+      NomeDoFilme: filme
+    }
+   }
+   
+   client.delete(params, function(err,data){
+    if(err){
+      console.log(err);
+    }else{
+      response.send(data);
+    }
+  });
 });
+
+
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
