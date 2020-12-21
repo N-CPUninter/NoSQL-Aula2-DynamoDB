@@ -49,19 +49,27 @@ app.get("/listartabelas", (request, response) => {
   });
 });
 
-app.get("/listartabelas", (request, response) => {
+app.get("/inserir", (request, response) => {
   AWS.config.update({region:"sa-east-1"});
   var client = new AWS.DynamoDB.DocumentClient();
   var params = {
-    TableName = "Filmes";
+    TableName: "Filmes",
     Item: {
-    Atores:"Antonio Fagundes",
-    NomeDoFilme:"Lagoa Azul",
-    Ano: "2018",
-    Duração:"180",
-    Gênero:"Terror"
+      Atores:"Antonio Fagundes",
+      NomeDoFilme:"Lagoa Azul",
+      Ano: "2018",
+      Duração:"180",
+      Gênero:"Terror"
+    }
   }
-  }
+        
+  client.put(params, function(err,data){
+    if(err){
+      console.log(err);
+    }else{
+      response.send(data);
+    }
+  });
 });
 
 // listen for requests :)
