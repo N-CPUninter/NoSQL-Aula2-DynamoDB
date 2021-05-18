@@ -56,7 +56,7 @@ app.get("/inserir", (request, response) => {
   var params = {
     TableName: "Filmes",
     Item: {
-      Atores:"Antonio Fagundes",
+      Atores:"Ant Fagundes",
       NomeDoFilme:"Lagoa Azul",
       Ano: "2018",
       Duração:"180",
