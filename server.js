@@ -111,8 +111,8 @@ app.get("/editar", (request, response) => {
 app.get("/excluir", (request, response) => {
   AWS.config.update({region:"sa-east-1"});
   var client = new AWS.DynamoDB.DocumentClient();
-  var ator = request.query.atores;
-  var filme = request.query.filmes;
+  var ator = request.query.ator;
+  var filme = request.query.filme;
   
    var params = {
     TableName: "Filmes",
