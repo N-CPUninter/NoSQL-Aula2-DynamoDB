@@ -134,7 +134,7 @@ app.get("/editar", (request, response) => {
       '#s':"Gênero"
     },
     ExpresionAttributeValues:{
-      ':y':valor
+      ':y':"valor"
     }
   }
   
