@@ -131,10 +131,10 @@ app.get("/editar", (request, response) => {
     },
     UpdateExpression: "set #s = :y",
     ExpressionAttributeNames:{
-      '#s':"Gênero"
+      '#s':Ano
     },
     ExpresionAttributeValues:{
-      ':y':"valor"
+      ':y':valor
     }
   }
   
