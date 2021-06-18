@@ -68,7 +68,7 @@ app.get("/inserir", (request, response) => {
   var params = {
     TableName: "Filmes",
     Item: {
-      Atores:"Ant Fagundes",
+      Atores:"Antônio Fagundes",
       NomeDoFilme:"Lagoa Azul",
       Ano: "2018",
       Duração:"180",
@@ -84,6 +84,15 @@ app.get("/inserir", (request, response) => {
     }
   });
 });
+
+
+
+
+
+
+
+
+
 
 
 
@@ -112,6 +121,12 @@ app.get("/excluir", (request, response) => {
     }
   });
 });
+
+
+
+
+
+
 
 
 
