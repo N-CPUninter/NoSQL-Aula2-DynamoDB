@@ -36,6 +36,10 @@ app.get("/dreams", (request, response) => {
   response.json(dreams);
 });
 
+
+
+
+
 app.get("/listartabelas", (request, response) => {
   AWS.config.update({region:"sa-east-1"});
   var dynamodb = new AWS.DynamoDB();
@@ -48,6 +52,14 @@ app.get("/listartabelas", (request, response) => {
     }
   });
 });
+
+
+
+
+
+
+
+
 
 // Inserir
 app.get("/inserir", (request, response) => {
