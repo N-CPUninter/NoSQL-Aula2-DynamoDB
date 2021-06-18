@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "aws-sdk": "*",
-    "body-parser": "*"
+    "body-parser": "*",
+    "aws-sdk": "*"
   },
   "engines": {
     "node": "12.x"
