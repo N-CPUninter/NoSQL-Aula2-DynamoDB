@@ -12,7 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "body-parser": "*",
-    "aws-sdk": "*"
+    "aws-sdk": "^2.1354.0"
   },
   "engines": {
     "node": "12.x"
