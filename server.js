@@ -53,7 +53,7 @@ app.get("/listartabelas", (request, response) => {
 
 // Inserir
 app.get("/inserir", (request, response) => {
-  AWS.config.update({ region: "sa-east-1" });
+  AWS.config.update({ region: "us-east-1" });
   var client = new AWS.DynamoDB.DocumentClient();
   var params = {
     TableName: "Filmes",
@@ -77,7 +77,7 @@ app.get("/inserir", (request, response) => {
 
 // Excluir
 app.get("/excluir", (request, response) => {
-  AWS.config.update({ region: "sa-east-1" });
+  AWS.config.update({ region: "us-east-1" });
   var client = new AWS.DynamoDB.DocumentClient();
   var ator = request.query.ator;
   var filme = request.query.filme;
@@ -101,7 +101,7 @@ app.get("/excluir", (request, response) => {
 
 // Editar
 app.get("/editar", (request, response) => {
-  AWS.config.update({ region: "sa-east-1" });
+  AWS.config.update({ region: "us-east-1" });
   var client = new AWS.DynamoDB.DocumentClient();
 
   var ator = request.query.ator;
