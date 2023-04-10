@@ -39,7 +39,7 @@ app.get("/dreams", (request, response) => {
 });
 
 app.get("/listartabelas", (request, response) => {
-  AWS.config.update({ region: "sa-east-1" });
+  AWS.config.update({ region: "us-east-1" });
   var dynamodb = new AWS.DynamoDB();
   var params = {};
   dynamodb.listTables(params, function (err, data) {
