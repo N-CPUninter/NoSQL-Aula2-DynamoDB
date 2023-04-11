@@ -11,7 +11,7 @@ const express = require("express");
 const app = express();
 
 //const AWS = require("aws-sdk");
-const { DynamoDBClient, ListTablesCommand } = require("@aws-sdk/client-dynamodb");
+const {DynamoDB} = require('@aws-sdk/client-dynamodb');
 
 
 var bodyParser = require("body-parser");
@@ -45,6 +45,7 @@ app.get("/dreams", (request, response) => {
 });
 
 app.get("/listartabelas", (request, response) => {
+  const dymamoDB = new DynamoDB({region: 'us-west-2'});
   (async function () {
      const dbclient = new DynamoDBClient({ region: 'us-west-2'});
 
