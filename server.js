@@ -8,6 +8,7 @@ const app = express();
 
 const AWS = require("aws-sdk");
 
+
 var bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(
@@ -40,7 +41,7 @@ app.get("/dreams", (request, response) => {
 
 app.get("/listartabelas", (request, response) => {
   AWS.config.update({ region: "us-east-1" });
-  var dynamodb = new AWS.DynamoDB();
+  var dynamodb = new AWS.DynamoDB({apiVersion: "2006-03-01"});
   var params = {};
   dynamodb.listTables(params, function (err, data) {
     if (err) {

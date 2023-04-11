@@ -624,6 +624,6 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
-  aws-sdk: ^2.1354.0
+  aws-sdk: '*'
   body-parser: '*'
   express: ^4.17.1
