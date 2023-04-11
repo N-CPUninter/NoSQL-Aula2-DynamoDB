@@ -12,7 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "body-parser": "*",
-    "@aws-sdk/client-dynamodb": "^3.310.0"
+    "@aws-sdk/client-dynamodb": "3.218.0"
   },
   "engines": {
     "node": "12.x"
