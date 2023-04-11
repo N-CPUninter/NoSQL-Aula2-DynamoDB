@@ -13,8 +13,7 @@
     "express": "^4.17.1",
     "body-parser": "*",
     "aws-crt": "^1.15.14",
-    "aws-sdk": "*",
-    "@aws-sdk/client-dynamodb": "*"
+    "aws-sdk": "*"
   },
   "engines": {
     "node": "12.x"
