@@ -12,6 +12,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "body-parser": "*",
+    "aws-crt": "^1.15.14",
+    "aws-sdk": "*",
     "@aws-sdk/client-dynamodb": "*"
   },
   "engines": {

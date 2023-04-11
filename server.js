@@ -10,7 +10,7 @@
 const express = require("express");
 const app = express();
 
-//const AWS = require("aws-sdk");
+const AWS = require("aws-sdk");
 const {DynamoDB} = require('@aws-sdk/client-dynamodb');
 
 
@@ -45,30 +45,28 @@ app.get("/dreams", (request, response) => {
 });
 
 app.get("/listartabelas", (request, response) => {
-  const dymamoDB = new DynamoDB({region: 'us-west-2'});
-  (async function () {
-     const dbclient = new DynamoDBClient({ region: 'us-west-2'});
-
-    try {
-      const results = await dbclient.send(new ListTablesCommand);
-      results.Tables.forEach(function (item, index) {
-        console.log(item.Name);
-      });
-    } catch (err) {
-      console.error(err)
-    }
-  })();
-  
-  // AWS.config.update({ region: "us-east-1" });
-  // var dynamodb = new AWS.DynamoDB();
-  // var params = {};
-  // dynamodb.listTables(params, function (err, data) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     response.send(data);
+  // const dymamoDB = new DynamoDB({region: 'us-west-2'});
+  // (async function () {
+  //   try {
+  //     const results = await dymamoDB.ListTablesCommand();
+  //     results.Tables.forEach(function (item, index) {
+  //       console.log(item.Name);
+  //     });
+  //   } catch (err) {
+  //     console.error(err)
   //   }
-  // });
+  // })();
+  
+  AWS.config.update({ region: "us-east-1" });
+  var dynamodb = new AWS.DynamoDB();
+  var params = {Limit: 10};
+  dynamodb.listTables(params, function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      response.send(data);
+    }
+  });
 });
 
 // Inserir
