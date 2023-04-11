@@ -9,6 +9,13 @@ const app = express();
 
 const AWS = require("aws-sdk");
 
+const SESConfig = {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    accessSecretKey: process.env.AWS_SECRET_KEY_ID,
+    region: "us-east-1"
+}
+AWS.config.update(SESConfig);
+
 var bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(
