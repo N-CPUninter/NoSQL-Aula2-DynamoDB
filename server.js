@@ -6,7 +6,7 @@
 const express = require("express");
 const app = express();
 
-const AWS = require("aws-sdk");
+//const AWS = require("aws-sdk");
 
 
 var bodyParser = require("body-parser");
@@ -40,16 +40,29 @@ app.get("/dreams", (request, response) => {
 });
 
 app.get("/listartabelas", (request, response) => {
-  AWS.config.update({ region: "us-east-1" });
-  var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-  var params = {};
-  dynamodb.listTables(params, function (err, data) {
-    if (err) {
-      console.log(err);
-    } else {
-      response.send(data);
-    }
-  });
+  (async function () {
+   const dbclient = new DynamoDBClient({ region: 'us-east-1'});
+ 
+  try {
+    const results = await dbclient.send(new aws-sdk/client-dynamodb/ListTablesCommand);
+    results.Tables.forEach(function (item, index) {
+      console.log(item.Name);
+    });
+  } catch (err) {
+    console.error(err)
+  }
+  })();
+  
+  // AWS.config.update({ region: "us-east-1" });
+  // var dynamodb = new AWS.DynamoDB();
+  // var params = {};
+  // dynamodb.listTables(params, function (err, data) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     response.send(data);
+  //   }
+  // });
 });
 
 // Inserir
