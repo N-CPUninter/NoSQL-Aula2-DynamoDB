@@ -41,7 +41,7 @@ app.get("/dreams", (request, response) => {
 
 app.get("/listartabelas", (request, response) => {
   AWS.config.update({ region: "us-east-1" });
-  var dynamodb = new AWS.DynamoDB({apiVersion: "2006-03-01"});
+  var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
   var params = {};
   dynamodb.listTables(params, function (err, data) {
     if (err) {
