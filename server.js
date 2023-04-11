@@ -3,10 +3,15 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
+ // import { DynamoDBClient, 
+ //            ListTablesCommand 
+ //    } from "@aws-sdk/client-dynamodb";
+
 const express = require("express");
 const app = express();
 
 //const AWS = require("aws-sdk");
+const { DynamoDBClient, ListTablesCommand } = require("@aws-sdk/client-dynamodb");
 
 
 var bodyParser = require("body-parser");
@@ -41,16 +46,16 @@ app.get("/dreams", (request, response) => {
 
 app.get("/listartabelas", (request, response) => {
   (async function () {
-   const dbclient = new DynamoDBClient({ region: 'us-east-1'});
- 
-  try {
-    const results = await dbclient.send(new aws-sdk/client-dynamodb/ListTablesCommand);
-    results.Tables.forEach(function (item, index) {
-      console.log(item.Name);
-    });
-  } catch (err) {
-    console.error(err)
-  }
+     const dbclient = new DynamoDBClient({ region: 'us-west-2'});
+
+    try {
+      const results = await dbclient.send(new ListTablesCommand);
+      results.Tables.forEach(function (item, index) {
+        console.log(item.Name);
+      });
+    } catch (err) {
+      console.error(err)
+    }
   })();
   
   // AWS.config.update({ region: "us-east-1" });
@@ -66,85 +71,85 @@ app.get("/listartabelas", (request, response) => {
 });
 
 // Inserir
-app.get("/inserir", (request, response) => {
-  AWS.config.update({ region: "us-east-1" });
-  var client = new AWS.DynamoDB.DocumentClient();
-  var params = {
-    TableName: "Filmes",
-    Item: {
-      Atores: "Antônio Fagundes",
-      NomeDoFilme: "Lagoa Azul",
-      Ano: "2018",
-      Duração: "180",
-      Gênero: "Terror",
-    },
-  };
+// app.get("/inserir", (request, response) => {
+//   AWS.config.update({ region: "us-east-1" });
+//   var client = new AWS.DynamoDB.DocumentClient();
+//   var params = {
+//     TableName: "Filmes",
+//     Item: {
+//       Atores: "Antônio Fagundes",
+//       NomeDoFilme: "Lagoa Azul",
+//       Ano: "2018",
+//       Duração: "180",
+//       Gênero: "Terror",
+//     },
+//   };
 
-  client.put(params, function (err, data) {
-    if (err) {
-      console.log(err);
-    } else {
-      response.send(data);
-    }
-  });
-});
+//   client.put(params, function (err, data) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       response.send(data);
+//     }
+//   });
+// });
 
-// Excluir
-app.get("/excluir", (request, response) => {
-  AWS.config.update({ region: "us-east-1" });
-  var client = new AWS.DynamoDB.DocumentClient();
-  var ator = request.query.ator;
-  var filme = request.query.filme;
+// // Excluir
+// app.get("/excluir", (request, response) => {
+//   AWS.config.update({ region: "us-east-1" });
+//   var client = new AWS.DynamoDB.DocumentClient();
+//   var ator = request.query.ator;
+//   var filme = request.query.filme;
 
-  var params = {
-    TableName: "Filmes",
-    Key: {
-      Atores: ator,
-      NomeDoFilme: filme,
-    },
-  };
+//   var params = {
+//     TableName: "Filmes",
+//     Key: {
+//       Atores: ator,
+//       NomeDoFilme: filme,
+//     },
+//   };
 
-  client.delete(params, function (err, data) {
-    if (err) {
-      console.log(err);
-    } else {
-      response.send(data);
-    }
-  });
-});
+//   client.delete(params, function (err, data) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       response.send(data);
+//     }
+//   });
+// });
 
-// Editar
-app.get("/editar", (request, response) => {
-  AWS.config.update({ region: "us-east-1" });
-  var client = new AWS.DynamoDB.DocumentClient();
+// // Editar
+// app.get("/editar", (request, response) => {
+//   AWS.config.update({ region: "us-east-1" });
+//   var client = new AWS.DynamoDB.DocumentClient();
 
-  var ator = request.query.ator;
-  var filme = request.query.filme;
-  var valor = request.query.valor;
+//   var ator = request.query.ator;
+//   var filme = request.query.filme;
+//   var valor = request.query.valor;
 
-  var params = {
-    TableName: "Filmes",
-    Key: {
-      Atores: ator,
-      NomeDoFilme: filme,
-    },
-    UpdateExpression: "set #s = :y",
-    ExpressionAttributeNames: {
-      "#s": "Ano",
-    },
-    ExpresionAttributeValues: {
-      ":y": valor,
-    },
-  };
+//   var params = {
+//     TableName: "Filmes",
+//     Key: {
+//       Atores: ator,
+//       NomeDoFilme: filme,
+//     },
+//     UpdateExpression: "set #s = :y",
+//     ExpressionAttributeNames: {
+//       "#s": "Ano",
+//     },
+//     ExpresionAttributeValues: {
+//       ":y": valor,
+//     },
+//   };
 
-  client.update(params, function (err, data) {
-    if (err) {
-      console.log(err);
-    } else {
-      response.send(data);
-    }
-  });
-});
+//   client.update(params, function (err, data) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       response.send(data);
+//     }
+//   });
+// });
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
