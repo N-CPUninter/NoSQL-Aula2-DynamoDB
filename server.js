@@ -47,7 +47,7 @@ app.get("/dreams", (request, response) => {
 });
 
 app.get("/listartabelas", (request, response) => {
-  AWS.config.update({ region: "us-east-1" });
+  AWS.config.update({ region: "us-east-2" });
   var dynamodb = new AWS.DynamoDB();
   var params = {Limit: 10};
   dynamodb.listTables(params, function (err, data) {
@@ -61,7 +61,7 @@ app.get("/listartabelas", (request, response) => {
 
 //Inserir
 app.get("/inserir", (request, response) => {
-  AWS.config.update({ region: "us-east-1" });
+  AWS.config.update({ region: "us-east-2" });
   var client = new AWS.DynamoDB.DocumentClient();
   var params = {
     TableName: "Filmes",
