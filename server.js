@@ -126,7 +126,7 @@ app.get("/editar", (request, response) => {
     ExpressionAttributeNames: {
       "#s": "Ano",
     },
-    ExpresionAttributeValues: {
+    ExpressionAttributeValues: {
       ":y": valor,
     },
   };
