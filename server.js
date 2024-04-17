@@ -66,11 +66,11 @@ app.get("/inserir", (request, response) => {
   var params = {
     TableName: "Filmes",
     Item: {
-      Atores: "Antônio Fagundes 2",
-      NomeDoFilme: "Lagoa Azul",
-      Ano: "2018",
+      Atores: "Guilherme Ditzel Patriota",
+      NomeDoFilme: "Eu e ela.",
+      Ano: "2024",
       Duração: "180",
-      Gênero: "Terror",
+      Gênero: "Ação",
     },
   };
 
